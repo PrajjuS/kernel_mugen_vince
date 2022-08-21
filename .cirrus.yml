@@ -1,0 +1,15 @@
+env:
+    CIRRUS_WORKING_DIR: "/build"
+    BOT_API: "ENCRYPTED[6d00cd271d7f60cdff4c5a9d66c58217e3c8d74ac903d70f2e1bf7b73dc5fa8dbc19ed7cf3a5342e237a51db463151eb]"
+    CHAT_ID: "ENCRYPTED[9db67f7993874e4ffa71778c0fa565a4ba48804adec7e39e84e60a9b9a99082a744ff1d00e33185a0fff913a20eca6cb]"
+
+task:
+  name: "Kernel Builder"
+  timeout_in: 60m
+  container:
+      image: anggit86/dev:latest
+      cpu: 6
+      memory: 16G
+
+  kernel_build_script:
+      - curl https://raw.githubusercontent.com/PrajjuS/kernel_mugen_vince/CI/mugen_builder.sh >> mugen_builder.sh && bash mugen_builder.sh
